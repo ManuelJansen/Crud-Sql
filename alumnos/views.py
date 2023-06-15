@@ -15,7 +15,7 @@ def crud(request):
     return render(request, 'alumnos/alumnos_list.html', context)
 
 def alumnosAdd(request):
-    if request.method is not "POST":
+    if request.method != "POST":
         generos=Genero.objects.all()
         context={'generos':generos}
         return render(request, 'alumnos/alumnos_add.html', context)
@@ -42,7 +42,7 @@ def alumnosAdd(request):
             telefono=telefono,
             email=email,
             direccion=direccion,
-            activo=1
+            activo="1"
         )
         obj.save() 
         context={'mensaje':"Ok, datos grabados..."}
